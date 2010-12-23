@@ -2,20 +2,11 @@
 /**
  * @uses        Submits payment transactions to Authorize.NET using the AIM API
  * @author      Richard Castera
-<<<<<<< HEAD
  * @link        http://www.richardcastera.com/projects/authorizenet-api-wrapper-class
  * @date        3/19/2010
- * @version     0.04
+ * @version     0.05
  * @copyright   Richard Castera 2010 Copyright 
  * @access      Public
-=======
- * @link        http://www.richardcastera.com/projects/authorize-net-api-wrapper-class-in-php
- * @date        3/19/2010
- * @version     0.04
- * @copyright   Richard Castera 2010 © Copyright 
- * @access      Public
- * @comments    This class can submit transactions to Authoirze.NET. We can send single payments or recurring.
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
  * @see         http://developer.authorize.net/
  * @license     GNU LESSER GENERAL PUBLIC LICENSE
  **/
@@ -27,11 +18,7 @@ class AuthNet {
    * @uses	  Sets the environment of the transaction.
    * @access	private
    * @var		  String 
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private $environment = 'test'; // default value.
 
 
@@ -39,11 +26,7 @@ class AuthNet {
    * @uses	  Contains the URLS for submitting a transaction.
    * @access	private
    * @var		  Array 
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private $gatewayURL = array (
     'live'=>'https://secure.authorize.net/gateway/transact.dll',
     'test'=>'https://test.authorize.net/gateway/transact.dll', 
@@ -54,11 +37,7 @@ class AuthNet {
    * @uses	  Contains the keys for submitting a transaction type to Authorize.
    * @access	private
    * @var		  Array 
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private $NVP = '';
 
 
@@ -66,11 +45,7 @@ class AuthNet {
    * @uses	  Contains an array of values returned from processing the transaction.
    * @access	private
    * @var		  Array 
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private $response = '';
 
 
@@ -78,11 +53,7 @@ class AuthNet {
    * @uses	  The delimeter to seperate the values returned from the transaction.
    * @access	private
    * @var		  String 
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private $responseDelimeter = '|';
 
 
@@ -97,11 +68,7 @@ class AuthNet {
    * @param   	  String $apiTransKey - The merchant's unique Transaction Key. 
    * @return  	  None.
    * @example		  $Auth = new AuthNet('API_LOGIN_ID', 'API_TRANSACTION_KEY');
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function __construct($apiLoginID = '', $apiTransKey = '') {
     $this->NVP = array (
       'x_login'=>$this->truncateChars($apiLoginID, 20),
@@ -119,11 +86,7 @@ class AuthNet {
    * @param       None. 
    * @return      None.
    * @example	    unset($obj);
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function __destruct() {
     unset($this);
   }
@@ -135,11 +98,7 @@ class AuthNet {
    * @param       None. 
    * @return      None.
    * @example	    $this->setupDefaults();
-<<<<<<< HEAD
    */ 
-=======
-   **/ 
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function setupDefaults() {
     $defaults = array(
       // Indicates to the system the set of fields that will be included in the response: 3.0 is the default version. 3.1 
@@ -173,11 +132,7 @@ class AuthNet {
    * @param       String $environment - Possible values: ('test', 'live'). 
    * @return      None.
    * @example	    $Auth->setEnvironment('test');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setEnvironment($environment = 'test') {
     if(strtolower($environment) == 'test') {
       $this->environment = $this->gatewayURL['test'];  
@@ -194,11 +149,7 @@ class AuthNet {
    * @param       None. 
    * @return      String - The environment set.
    * @example	    $Auth->getEnvironment();
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function getEnvironment() {
     return $this->environment;  
   }
@@ -211,11 +162,7 @@ class AuthNet {
    * @param       Integer $seconds - Any value between 0 and 28800 (no comma). 
    * @return      None.
    * @example	    $Auth->submissionWindow(60); // 1 minute
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function submissionWindow($seconds = 28800) {
     $window = array(
       'x_duplicate_window'=>(int)$seconds,
@@ -232,11 +179,7 @@ class AuthNet {
    * @param       String $transactionType - AUTH_CAPTURE (default), AUTH_ONLY, CAPTURE_ONLY, CREDIT, PRIOR_AUTH_CAPTURE, VOID. 
    * @return      None.
    * @example	    $Auth->setTransactionType('AUTH_CAPTURE');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setTransactionType($transactionType = 'AUTH_CAPTURE') {
     $type = array(
       'x_type'=>strtoupper($transactionType),
@@ -253,11 +196,7 @@ class AuthNet {
    * @param       String $paymentMethod - CC or ECHECK. 
    * @return      None.
    * @example	    $Auth->setPaymentMethod('CC');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setPaymentMethod($paymentMethod = 'CC') {
     $method = array(
       'x_method'=>strtoupper($paymentMethod),
@@ -275,11 +214,7 @@ class AuthNet {
    * @param       Boolean - $wholeAmt - True to remove cents false, to keep it. 
    * @return      None.
    * @example	    $Auth->setAmount(150.00);
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setAmount($amount = 0, $wholeAmt) {
     $amt = array(
       'x_amount'=>$this->cleanAmt($amount, $wholeAmt),
@@ -296,11 +231,7 @@ class AuthNet {
    * @param       String $number - The Credit Card Number. Dashes will be striped. 
    * @return      None.
    * @example	    $Auth->setCCNumber('1234-1234-1234-1234');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCCNumber($number = '') {
     $cc = array(
       'x_card_num'=>$this->cleanCCNumber($number),
@@ -317,11 +248,7 @@ class AuthNet {
    * @param       String $expiration - The Customer's Credit Card Expiration Date
    * @return      None.
    * @example	    $Auth->setExpiration('03/12');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setExpiration($expiration = '0000') {
     $exp = array(
       'x_exp_date'=>$this->cleanExpDate($expiration),
@@ -338,11 +265,7 @@ class AuthNet {
    * @param       String $cvv - The Customer's Credit Card Security Code
    * @return      None.
    * @example	    $Auth->setCVV('0000');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCVV($cvv = '') {
     $security = array(
       'x_card_code'=>$cvv,
@@ -359,11 +282,7 @@ class AuthNet {
    * @param       String $description - The Payment description.
    * @return      None.
    * @example	    $Auth->setPaymentDescription('Purchased product number 34324');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setPaymentDescription($description = '') {
     $desc = array(
       'x_description'=>$this->truncateChars($description, 255),
@@ -380,11 +299,7 @@ class AuthNet {
    * @param       String $firstName - The First Name associated with the Customer's Billing Address. 
    * @return      None.
    * @example	    $Auth->setCustomerFirstName('Richard');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerFirstName($firstName = '') {
     $first = array(
       'x_first_name'=>$this->truncateChars($firstName, 50),
@@ -401,11 +316,7 @@ class AuthNet {
    * @param       String $lastName - The Last Name associated with the Customer's Billing Address. 
    * @return      None.
    * @example	    $Auth->setCustomerLastName('Castera');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerLastName($lastName = '') {
     $last = array(
       'x_last_name'=>$this->truncateChars($lastName, 50),
@@ -422,11 +333,7 @@ class AuthNet {
    * @param       String $companyName - The company name associated with the Customer's Billing Address. 
    * @return      None.
    * @example	    $Auth->setCustomerCompany('SankyNet');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerCompany($companyName = '') {
     $company = array(
       'x_company'=>$this->truncateChars($companyName, 50),
@@ -443,11 +350,7 @@ class AuthNet {
    * @param       String $customerAddress - The Customer's Billing address. 
    * @return      None.
    * @example	    $Auth->setCustomerAddress('589 8th Ave. Suite 10');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerAddress($customerAddress = '') {
     $address = array(
       'x_address'=>$this->truncateChars($customerAddress, 60),
@@ -464,11 +367,7 @@ class AuthNet {
    * @param       String $customerCity - The Customer's Billing City. 
    * @return      None.
    * @example	    $Auth->setCustomerCity('New York');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerCity($customerCity = '') {
     $city = array(
       'x_city'=>$this->truncateChars($customerCity, 40),
@@ -485,11 +384,7 @@ class AuthNet {
    * @param       String $customerState - The Customer's Billing State. 
    * @return      None.
    * @example	    $Auth->setCustomerState('NY');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerState($customerState = '') {
     $state = array(
       'x_state'=>$this->truncateChars($customerState, 40),
@@ -506,11 +401,7 @@ class AuthNet {
    * @param       String $customerZip - The Customer's Billing Zip. 
    * @return      None.
    * @example	    $Auth->setCustomerZip('10018');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerZip($customerZip = '') {
     $zip = array(
       'x_zip'=>$this->truncateChars($customerZip, 20),
@@ -527,11 +418,7 @@ class AuthNet {
    * @param       String $customerCountry - The Customer's Billing Country. 
    * @return      None.
    * @example	    $Auth->setCustomerCountry('United States');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerCountry($customerCountry = '') {
     $country = array(
       'x_country'=>$this->truncateChars($customerCountry, 60),
@@ -548,11 +435,7 @@ class AuthNet {
    * @param       String $customerPhone - The Customer's Billing Phone. 
    * @return      None.
    * @example	    $Auth->setCustomerPhone('212-123-4567');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerPhone($customerPhone = '000-000-0000') {
     $phone = array(
       'x_phone'=>$this->truncateChars($this->cleanPhoneNumber($customerPhone), 25),
@@ -569,11 +452,7 @@ class AuthNet {
    * @param       String $customerFax - The Customer's Billing Fax. 
    * @return      None.
    * @example	    $Auth->setCustomerFax('212-123-4567');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerFax($customerFax = '000-000-0000') {
     $fax = array(
       'x_fax'=>$this->truncateChars($this->cleanPhoneNumber($customerFax), 25),
@@ -590,11 +469,7 @@ class AuthNet {
    * @param       String $customerEmail - The Customer's Email Address. 
    * @return      None.
    * @example	    $Auth->setCustomerEmail('richard.castera@gmail.com');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomerEmail($customerEmail = '') {
     $email = array(
       'x_email'=>$this->truncateChars($customerEmail, 255),
@@ -611,11 +486,7 @@ class AuthNet {
    * @param       String $firstName - The First Name associated with the Customer's Shipping Address. 
    * @return      None.
    * @example	    $Auth->setShippingFirstName('Richard');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingFirstName($firstName = '') {
     $first = array(
       'x_ship_to_first_name'=>$this->truncateChars($firstName, 50),
@@ -632,11 +503,7 @@ class AuthNet {
    * @param       String $lastName - The Last Name associated with the Customer's Shipping Address. 
    * @return      None.
    * @example	    $Auth->setShippingLastName('Castera');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingLastName($lastName = '') {
     $last = array(
       'x_ship_to_last_name'=>$this->truncateChars($lastName, 50),
@@ -653,11 +520,7 @@ class AuthNet {
    * @param       String $companyName - The Company name associated with the Customer's Shipping Address. 
    * @return      None.
    * @example	    $Auth->setShippingCompany('SankyNet');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingCompany($companyName = '') {
     $company = array(
       'x_ship_to_company'=>$this->truncateChars($companyName, 50),
@@ -674,11 +537,7 @@ class AuthNet {
    * @param       String $shippingAddress - The Customer's Shipping address. 
    * @return      None.
    * @example	    $Auth->setShippingAddress('589 8th Ave. Suite 10');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingAddress($shippingAddress = '') {
     $address = array(
       'x_ship_to_address'=>$this->truncateChars($shippingAddress, 60),
@@ -695,11 +554,7 @@ class AuthNet {
    * @param       String $shippingCity - The Customer's Shipping City. 
    * @return      None.
    * @example	    $Auth->setShippingCity('New York');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingCity($shippingCity = '') {
     $city = array(
       'x_ship_to_city'=>$this->truncateChars($shippingCity, 40),
@@ -716,11 +571,7 @@ class AuthNet {
    * @param       String $shippingState - The Customer's Shipping State. 
    * @return      None.
    * @example	    $Auth->setShippingState('NY');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingState($shippingState = '') {
     $state = array(
       'x_ship_to_state'=>$this->truncateChars($shippingState, 40),
@@ -737,11 +588,7 @@ class AuthNet {
    * @param       String $shippingZip - The Customer's Shipping Zip. 
    * @return      None.
    * @example	    $Auth->setShippingZip('10018');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingZip($shippingZip = '') {
     $zip = array(
       'x_ship_to_zip'=>$this->truncateChars($shippingZip, 20),
@@ -758,11 +605,7 @@ class AuthNet {
    * @param       String $shippingCountry - The Customer's Shipping Country. 
    * @return      None.
    * @example	    $Auth->setShippingCountry('United States');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setShippingCountry($shippingCountry = '') {
     $country = array(
       'x_ship_to_country'=>$this->truncateChars($shippingCountry, 60),
@@ -779,11 +622,7 @@ class AuthNet {
    * @param       String $sendReceipt - Indicate whether an email receipt should be sent to the customer.
    * @return      None.
    * @example	    $Auth->sendCustomerReceipt(TRUE);
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function sendCustomerReceipt($sendReceipt = TRUE) {
     $receipt = array(
       'x_email_customer'=>(int)$sendReceipt,
@@ -801,11 +640,7 @@ class AuthNet {
    * @param       String $value - The value of the custom field.
    * @return      None.
    * @example	    $Auth->setCustomField('origin_code', 'hpdon');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function setCustomField($name = '', $value = '') {
     $custom = array(
       $name=>(string)$value,
@@ -821,11 +656,7 @@ class AuthNet {
    * @param       None. 
    * @return      String - A string of NVP's.
    * @example	    $this->getNVP();
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function getNVP() {
     $post = '';
     foreach($this->NVP as $key=>$value) { 
@@ -841,11 +672,7 @@ class AuthNet {
    * @param       None.
    * @return      Boolean - True if the transaction was successful False, if not.
    * @example	    $Auth->processTransaction();
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function processTransaction() {
     // Uses the CURL library for php to establish a connection,
     // submit the post, and record the response.
@@ -877,11 +704,7 @@ class AuthNet {
    * @param       None.
    * @return      Array/String - Returns an array of Authorize's response or empty string if not return.
    * @example	    $Auth->getResponse();
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function getResponse() {
     if($this->response) {
       $response = explode($this->responseDelimeter, $this->response);
@@ -906,11 +729,7 @@ class AuthNet {
    * @param       Boolean $wholeAmt - True to remove cents false, to keep it. 
    * @return      Integer/Float - Returns the monetary amount formatted based on the $wholeAmt parameter.
    * @example	    $this->cleanAmt();
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function cleanAmt($amount = 0, $wholeAmt = FALSE) {
     if($wholeAmt) {
       $amount = preg_replace('/[^0-9.]/', '', trim($amount));
@@ -929,11 +748,7 @@ class AuthNet {
    * @param       String $cc - The crdeit card number. 
    * @return      String - Returns the credit card number with only numeric characters.
    * @example	    $this->cleanCCNumber('5412-2232-2323-3443');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function cleanCCNumber($cc = '') {
     $cc = preg_replace('/[^0-9]/', '', trim($cc));
     return (string)$cc;
@@ -946,11 +761,7 @@ class AuthNet {
    * @param       String $phone - The phone number. 
    * @return      String - Returns the phone number with dashes.
    * @example	    $this->cleanPhoneNumber('718-232-2323');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function cleanPhoneNumber($phone = '') {
     $phone = preg_replace('/[^0-9-]/', '', trim($phone));
     return (string)$phone;
@@ -963,11 +774,7 @@ class AuthNet {
    * @param       String $exp - The expiration date. 
    * @return      String - Returns the expiration date formatted for authorize.
    * @example	    $this->cleanExpDate('718-232-2323');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function cleanExpDate($exp = '') {
     $exp = preg_replace('/[^0-9]-\//', '', trim($exp));
     return (string)$exp;
@@ -981,11 +788,7 @@ class AuthNet {
    * @param       Integer $limit - The amount to truncate. 
    * @return      Returns the string truncated.
    * @example	    $this->truncateChars('Richard Castera', 10);
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   private function truncateChars($string = '', $limit = 0) {
     for($i = 0; $i <= $limit AND $i < strlen($string); $i++){
       $output .= $string[$i];
@@ -1000,11 +803,7 @@ class AuthNet {
    * @param       String $type - Valid values are 'array' or 'string'.
    * @return      This returns either and array of the NVP's or a string based on the parameter chosen.
    * @example	    $Auth->debugNVP('array');
-<<<<<<< HEAD
    */
-=======
-   **/
->>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
   public function debugNVP($type = 'array') {
     if($type == 'array') {
       return $this->NVP;   
