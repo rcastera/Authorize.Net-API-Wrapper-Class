@@ -1,0 +1,11 @@
+The Authorize.Net  Payment Gateway can help you accept credit card and electronic check payments quickly and affordably. More than 
+305,000 merchants trust them for payment processing and online fraud prevention solutions.
+
+What can I do with it?
+This class is a wrapper written in PHP5 that can be used to submit credit card transactions to the Authorize.net 
+payment gateway using the AIM Web services API. The class provides functions for setting the payment details like the customer 
+name, address, phone number, shipping address, charge amount, credit card number and expiry date.
+
+How do I use it?
+First you'll need to have an account with Authorize.Net if you don't already have one. Download this class and plugin in the 
+information that you want to submit. An example is included.
