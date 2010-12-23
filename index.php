@@ -3,8 +3,15 @@
 require_once('Class.AuthNet.php');
 
 /** 
+<<<<<<< HEAD
  * Create new Regular Transaction.
  */
+=======
+ *-----------------------------------------------------------------------------------------------------------------------------------------------
+ * Create new Regular Transaction.
+ *-----------------------------------------------------------------------------------------------------------------------------------------------
+ **/
+>>>>>>> c5d35af43011e9ea1fba8dcee118409cbdc618e2
 $Auth = new AuthNet('YOUR_LOGIN_ID', 'YOUR_TRANS_KEY');         // Merchant's unique API Login ID and Transaction Key
             
 $Auth->setEnvironment('test');                                  // 'test' (default) or 'live'
