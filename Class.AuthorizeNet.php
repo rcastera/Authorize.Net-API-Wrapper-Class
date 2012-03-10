@@ -1,10 +1,10 @@
 <?php
 /**
  * Submits payment transactions to Authorize.NET using the AIM API
- * @author      Richard Castera
- * @link        http://www.richardcastera.com/projects/authorizenet-api-wrapper-class
- * @see         http://developer.authorize.net/
- * @license     GNU LESSER GENERAL PUBLIC LICENSE
+ * @author Richard Castera
+ * @link http://www.richardcastera.com/projects/authorizenet-api-wrapper-class
+ * @see http://developer.authorize.net/
+ * @license GNU LESSER GENERAL PUBLIC LICENSE
  */
 
 class AuthorizeNet {
@@ -543,7 +543,7 @@ class AuthorizeNet {
    * Used to debug values that will be sent to Authorize.
    * @param String $string - The string to truncate.
    * @param Integer $limit - The amount to truncate. 
-   * @return Returns the string truncated.
+   * @return String - Returns the string truncated.
    */
   private function truncateChars($string = '', $limit = 0) {
     for($i = 0; $i <= $limit AND $i < strlen($string); $i++){
@@ -555,7 +555,7 @@ class AuthorizeNet {
   /**
    * Used to debug values that will be sent to Authorize.
    * @param String $type - Valid values are 'array' or 'string'.
-   * @return This returns either and array of the NVP's or a string based on the parameter chosen.
+   * @return Mixed - This returns either and array of the NVP's or a string based on the parameter chosen.
    */
   public function debugNVP($type = 'array') {
     if($type == 'array') {

@@ -16,7 +16,7 @@ First you'll need to have an account with Authorize.Net if you don't already hav
 plugin in the information that you want to submit. An example is included and provided below.
 
 
-Examples
+Example
 -----------
     <?php
         require_once('Class.AuthorizeNet.php');
